@@ -9,33 +9,13 @@ using System.Threading.Tasks;
 
 namespace senai.Roman.webAPI.Repositories
 {
-    public class ProjetoRepository : IProjetoRepository
+    public class ProjetoRepository
     {
         RomanContext ctx = new RomanContext();
 
-        public void Atualizar(int idProjeto, Projeto projetoAtualizado)
-        {
-            Projeto projetoBuscado = BuscarPorId(idProjeto);
+        
 
-            if (projetoAtualizado.NomeProjeto != null)
-            {
-                projetoBuscado.NomeProjeto = projetoAtualizado.NomeProjeto;
-            }
-
-            if (projetoAtualizado.Descricao != null)
-            {
-                projetoBuscado.Descricao = projetoAtualizado.Descricao;
-            }
-
-            ctx.Projetos.Update(projetoBuscado);
-
-            ctx.SaveChanges();
-        }
-
-        public Projeto BuscarPorId(int idProjeto)
-        {
-            return ctx.Projetos.Include(t => t.Temas).FirstOrDefault(p => p.IdProjeto == idProjeto);
-        }
+        
 
         public void Cadastrar(Projeto novoProjeto)
         {
@@ -44,18 +24,8 @@ namespace senai.Roman.webAPI.Repositories
             ctx.SaveChanges();
         }
 
-        public void Deletar(int idProjeto)
-        {
-            Projeto projetoBuscado = BuscarPorId(idProjeto);
+        
 
-            ctx.Projetos.Remove(projetoBuscado);
-
-            ctx.SaveChanges();
-        }
-
-        public List<Projeto> Listar()
-        {
-            return ctx.Projetos.Include(t => t.Temas).OrderBy(p => p.IdProjeto).ToList();
-        }
+        
     }
 }

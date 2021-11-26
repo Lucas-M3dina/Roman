@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>senai.Roman.webAPI</name>
+    </assembly>
+    <members>
+        <member name="T:senai.Roman.webAPI.Interfaces.IProfessorRepository">
+            <summary>
+            Interface responsável pelo ProfessorRepository
+            </summary>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProfessorRepository.Listar">
+            <summary>
+            Listar todas os Professores
+            </summary>
+            <returns>Lista de Professores</returns>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProfessorRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Buscar Professor pelo ID
+            </summary>
+            <param name="idProfessor">ID do Professor que será buscado</param>
+            <returns>Professor encontrada</returns>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProfessorRepository.Cadastrar(senai.Roman.webAPI.Domains.Professor)">
+            <summary>
+            Cadastrar uma Professor
+            </summary>
+            <param name="novoProfessor">Objeto novoProfessor com as todas as informações</param>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProfessorRepository.Atualizar(System.Int32,senai.Roman.webAPI.Domains.Professor)">
+            <summary>
+            Atualizar os dados de um Professor
+            </summary>
+            <param name="idProfessor">ID do Professor que será atualizada</param>
+            <param name="ProfessorAtualizado">Objeto ProfessorAtualizado com as novas informações</param>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProfessorRepository.Deletar(System.Int32)">
+            <summary>
+            Deletar uma Professor
+            </summary>
+            <param name="idProfessor">ID do Professor que será deletado</param>
+        </member>
+        <member name="T:senai.Roman.webAPI.Interfaces.IProjetoRepository">
+            <summary>
+            Interface responsável pelo ProjetoRepository
+            </summary>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProjetoRepository.Listar">
+            <summary>
+            Listar todas os Projetos
+            </summary>
+            <returns>Lista de Projetos</returns>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProjetoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Buscar Projeto pelo ID
+            </summary>
+            <param name="idProjeto">ID do Projeto que será buscado</param>
+            <returns>Projeto encontrada</returns>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProjetoRepository.Cadastrar(senai.Roman.webAPI.Domains.Projeto)">
+            <summary>
+            Cadastrar um Projeto
+            </summary>
+            <param name="novoProjeto">Objeto novoProjeto com as todas as informações</param>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProjetoRepository.Atualizar(System.Int32,senai.Roman.webAPI.Domains.Projeto)">
+            <summary>
+            Atualizar os dados de um Projeto
+            </summary>
+            <param name="idProjeto">ID do Projeto que será atualizada</param>
+            <param name="projetoAtualizado">Objeto ProjetoAtualizado com as novas informações</param>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IProjetoRepository.Deletar(System.Int32)">
+            <summary>
+            Deletar uma Projeto
+            </summary>
+            <param name="idProjeto">ID do Projeto que será deletado</param>
+        </member>
+        <member name="T:senai.Roman.webAPI.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface responsável pelo UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:senai.Roman.webAPI.Interfaces.IUsuarioRepository.Cadastrar(senai.Roman.webAPI.Domains.Usuario)">
+            <summary>
+            Cadastrar um usuário
+            </summary>
+            <param name="novoUsuario">Objeto novoUsuario com as todas as informações</param>
+        </member>
+    </members>
+</doc>

@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using senai.Roman.webAPI.Contexts;
 using senai.Roman.webAPI.Domains;
 using senai.Roman.webAPI.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace senai.Roman.webAPI.Repositories
 {
