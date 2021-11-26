@@ -7,8 +7,6 @@ namespace senai.Roman.webAPI.Interfaces
 {
     public class ITemaRepository
     {
-        /// <summary>
-        /// Interface responsável pelo TemaRepository
-        /// </summary>
+       
     }
 }

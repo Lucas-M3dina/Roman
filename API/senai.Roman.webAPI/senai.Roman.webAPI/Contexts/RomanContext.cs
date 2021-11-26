@@ -18,7 +18,7 @@ namespace senai.Roman.webAPI.Contexts
         {
         }
 
-        public virtual DbSet<Professor> Professores { get; set; }
+        public virtual DbSet<Professor> Professors { get; set; }
         public virtual DbSet<Projeto> Projetos { get; set; }
         public virtual DbSet<Tema> Temas { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuarios { get; set; }

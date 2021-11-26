@@ -42,5 +42,12 @@ namespace senai.Roman.webAPI.Interfaces
         /// </summary>
         /// <param name="idProjeto">ID do Projeto que será deletado</param>
         void Deletar(int idProjeto);
+
+        /// <summary>
+        /// Listar projetos relacionadas a um professor
+        /// </summary>
+        /// <param name="idProfessor">ID do professor que será buscado</param>
+        /// <returns>Projeto encontrada</returns>
+        List<Projeto> ListarProjetosProfessor(int idProfessor);
     }
 }

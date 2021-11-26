@@ -29,6 +29,17 @@ namespace senai.Roman.webAPI
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorPolicy",
+                                builder =>
+                                {
+                                    builder.WithOrigins("http://localhost:3000")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                                });
+            });
+
             services
                 .AddAuthentication(options => {
                     options.DefaultAuthenticateScheme = "JwtBearer";

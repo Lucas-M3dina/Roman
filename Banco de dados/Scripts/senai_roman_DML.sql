@@ -1,4 +1,4 @@
-USE ROMAN;
+USE SENAI_ROMAN;
 GO
 
 INSERT INTO tema(nomeTema)

@@ -7,8 +7,6 @@ namespace senai.Roman.webAPI.Interfaces
 {
     interface ITipoUsuarioRepository
     {
-        /// <summary>
-        /// Interface responsável pelo TipoUsuarioRepository
-        /// </summary>
+        
     }
 }
