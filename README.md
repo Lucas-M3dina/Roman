@@ -1,9 +1,9 @@
 # Desafio Roman G2M
 
 A aplicação Roman é um projeto para cadastrar e
-listar todos os seus projetos! 
-Um sistema de propostas de projetos que serão compartilhados entre os
-professores de diferentes escolas, a melhor plataforma para sugestão de projetos.
+listar todos os seus projetos! Um sistema de propostas de projetos que serão compartilhados entre os
+professores de diferentes escolas.
+Venha se cadastrar na melhor plataforma para sugestão de projetos!!!
 
 ## 🔨 Funcionalidades do projeto
 
