@@ -24,7 +24,7 @@ namespace senai.Roman.webAPI.Controllers
             _projetoRepository = new ProjetoRepository();
         }
 
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2")]
         [HttpPost]
         public IActionResult Cadastrar(Projeto novoProjeto)
         {
@@ -41,7 +41,7 @@ namespace senai.Roman.webAPI.Controllers
         }
 
 
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2")]
         [HttpGet("listaPro")]
         public IActionResult ListarProjetosProfessor()
         {
