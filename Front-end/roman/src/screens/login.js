@@ -1,4 +1,4 @@
-/* import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -28,11 +28,11 @@ export default class Login extends Component {
     //vamos utilizar console.warn.
 
     //apenas para teste.
-    console.warn(this.state.Email + ' ' + this.state.Senha);
+    //console.warn(this.state.Email + ' ' + this.state.Senha);
 
     const resposta = await api.post('/Login', {
-      Email: this.state.Email, //ADM@ADM.COM
-      Senha: this.state.Senha, //senha123
+      Email: this.state.Email, //gustavo@gmail.com
+      Senha: this.state.Senha, //1234
     });
 
     //mostrar no swagger para montar.
@@ -41,34 +41,36 @@ export default class Login extends Component {
 
     //agora sim podemos descomentar.
     if (resposta.status == 200) {
-      this.props.navigation.navigate('Main');
+      this.props.navigation.navigate('Listagem');
     }
 
-    console.warn(token);
+    //console.warn(token);
 
     //
   };
 
   render() {
     return (
-      <ImageBackground
-        source={require('../../assets/img/login.png')}
-        style={StyleSheet.absoluteFillObject}>
-        retangulo roxo
-        <View style={styles.overlay} />
-        <View style={styles.main}>
-          <Image
-            source={require('../../assets/img/loginIcon2x.png')}
-            style={styles.mainImgLogin}
-          />
+      <View style={styles.main}>
+        <View style={styles.mainHeader}>
+          <View style={styles.mainHeaderRow}>
+            {/* <Image
+              source={require('../../assets/img/calendar.png')}
+              style={styles.mainHeaderImg}
+            /> */}
+            <Text style={styles.mainHeaderText}>{'Roman'.toUpperCase()}</Text>
+          </View>
+          <View style={styles.mainHeaderLine} />
+        </View>
 
+        <View style={styles.mainBody}>
           <TextInput
             style={styles.inputLogin}
             placeholder="username"
             placeholderTextColor="#FFF"
             keyboardType="email-address"
             // ENVENTO PARA FAZERMOS ALGO ENQUANTO O TEXTO MUDA
-            onChangeText={email => this.setState({email})}
+            onChangeText={Email => this.setState({ Email })}
           />
 
           <TextInput
@@ -78,7 +80,7 @@ export default class Login extends Component {
             keyboardType="default" //para default nao obrigatorio.
             secureTextEntry={true} //proteje a senha.
             // ENVENTO PARA FAZERMOS ALGO ENQUANTO O TEXTO MUDA
-            onChangeText={senha => this.setState({senha})}
+            onChangeText={Senha => this.setState({ Senha })}
           />
 
           <TouchableOpacity
@@ -87,34 +89,47 @@ export default class Login extends Component {
             <Text style={styles.btnLoginText}>Login</Text>
           </TouchableOpacity>
         </View>
-      </ImageBackground>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  //antes da main
-  overlay: {
-    ...StyleSheet.absoluteFillObject, //todas as prop do styleShhet, e vamos aplica o abosluteFIL...
-    backgroundColor: 'rgba(183,39,255,0.79)', //rgba pq vamos trabalhar com transparencia.
-  },
-
   // conteúdo da main
   main: {
-    // flex: 1,
-    //backgroundColor: '#F1F1F1', retirar pra nao ter conflito.
+    flex: 2,
+    backgroundColor: '#3912A9',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',
   },
 
-  mainImgLogin: {
-    tintColor: '#FFF', //confirmar que sera branco
-    height: 100, //altura
-    width: 90, //largura img nao é quadrada
-    margin: 60, //espacamento em todos os lados,menos pra cima.
-    marginTop: 0, // tira espacamento pra cima
+  mainHeader: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mainHeaderRow: {
+    flexDirection: 'row',
+  },
+  // imagem do cabeçalho
+  mainHeaderImg: {
+    width: 22,
+    height: 22,
+    tintColor: '#ccc',
+    marginRight: -5,
+    marginTop: -12,
+  },
+  // texto do cabeçalho
+  mainHeaderText: {
+    fontSize: 16,
+    letterSpacing: 5,
+    color: '#999',
+  },
+
+  mainBody: {
+    flex: 4,
   },
 
   inputLogin: {
@@ -142,6 +157,6 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     borderWidth: 1,
     borderRadius: 4,
-    shadowOffset: {height: 1, width: 1},
+    shadowOffset: { height: 1, width: 1 },
   },
-}); */
+});

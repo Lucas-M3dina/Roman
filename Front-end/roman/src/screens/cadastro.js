@@ -1,4 +1,4 @@
-/* import React, {Component} from 'react';
+import React, {Component} from 'react';
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 
 import api from '../services/api';
@@ -18,10 +18,10 @@ export default class Cadastro extends Component {
     try {
       const token = await AsyncStorage.getItem('userToken');
 
-      console.warn(idevento);
+      console.warn(idProjeto);
 
       await api.post(
-        '/Projetos/listaPro/' + idProjeto,
+        '/projetos',
         {},
         {
           headers: {
@@ -49,19 +49,19 @@ export default class Cadastro extends Component {
   render() {
     return (
       <View style={styles.main}>
-        Cabeçalho - Header
+        {/* Cabeçalho - Header */}
         <View style={styles.mainHeader}>
           <View style={styles.mainHeaderRow}>
-            <Image
+            {/* <Image
               source={require('../../assets/img/calendar.png')}
               style={styles.mainHeaderImg}
-            />
+            /> */}
             <Text style={styles.mainHeaderText}>{'Projetos'.toUpperCase()}</Text>
           </View>
           <View style={styles.mainHeaderLine} />
         </View>
 
-        Corpo - Body
+        {/* Corpo - Body */}
         <View style={styles.mainBody}>
           <FlatList
             contentContainerStyle={styles.mainBodyContent}
@@ -79,14 +79,14 @@ export default class Cadastro extends Component {
 
     <View style={styles.flatItemRow}>
       <View style={styles.flatItemImg}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => this.Inscrever(item.idProjeto)}
           style={styles.flatItemImg}>
           <Image
             source={require('../../assets/img/view.png')}
             style={styles.flatItemImgIcon}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
@@ -177,4 +177,4 @@ const styles = StyleSheet.create({
     height: 26,
     tintColor: '#B727FF',
   },
-}); */
+});
