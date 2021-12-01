@@ -19,8 +19,18 @@ professores.
 - REST: Arquitetura de software que define um conjunto de restrições a serem usadas para a criação de serviços Web com boas práticas.
 - SQLServer: Sistema gerenciador de Banco de dados relacional (SGBD).
 - Figma: Editor gráfico de vetor e prototipagem de projetos de design.
-- React Native: Biblioteca JavaScript utilizada para desenvolver aplicativos para os sistemas Android e iOS de forma nativa.
 - JavaScript: Linguagem de programação utilizada na construção do front-end da aplicação Mobile.
+- React Native: Biblioteca JavaScript utilizada para desenvolver aplicativos para os sistemas Android e iOS de forma nativa.
+- NodeJs: Executa códigos JavaScript fora de um navegador web e para mobile é um runtime que é executado tanto para IOS e Android
+
+&nbsp;
+&nbsp;
+
+## <p align="center">Trello 📝</p>
+<p align="center">Aqui temos o Trello feito pela equipe, este que é o ambiente utilizado para organizar o projeto de acordo com tarefas, etapas e integrantes.</p>
+
+
+<p align="center"><a href="https://trello.com/b/zTcwnsqh/roman"> <img src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white" /> </a></p>
 
 &nbsp;
 &nbsp;
