@@ -120,9 +120,9 @@ renderItem = ({ item }) => (
   <View style={styles.flatItemRow}>
     <View style={styles.flatItemContainer}>
       <Text style={styles.flatItemTitle}>{item.nomeProjeto}</Text>
-      <Text style={styles.flatItemInfo}>{item.descricao}</Text>
-      <Text style={styles.flatItemInfo}>{item.idProfessorNavigation.nomeProfessor}</Text>
-      <Text style={styles.flatItemInfo}>{item.idTemaNavigation.nomeTema}</Text>
+      <Text style={styles.flatItemInfo}>Descrição: {item.descricao}</Text>
+      <Text style={styles.flatItemInfo}>Professor: {item.idProfessorNavigation.nomeProfessor}</Text>
+      <Text style={styles.flatItemInfo}>Tema: {item.idTemaNavigation.nomeTema}</Text>
 
       {/* <Text style={styles.flatItemInfo}>
           {Intl.DateTimeFormat("pt-BR", {
@@ -208,11 +208,12 @@ const styles = StyleSheet.create({
   },
   flatItemTitle: {
     fontSize: 16,
-    color: '#ccc',
+    color: '#979797',
+    fontWeight: 'bold',
   },
   flatItemInfo: {
-    fontSize: 12,
-    color: '',
+    fontSize: 14,
+    color: '#979797',
     lineHeight: 24,
   },
   flatItemImg: {

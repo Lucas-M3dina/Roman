@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = senai.Roman.webAPI
-build_property.ProjectDir = C:\Users\42410863817\Desktop\Roman\API\senai.Roman.webAPI\senai.Roman.webAPI\
+build_property.ProjectDir = C:\Users\User\Desktop\Roman\API\senai.Roman.webAPI\senai.Roman.webAPI\

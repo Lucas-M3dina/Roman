@@ -28,7 +28,7 @@ namespace senai.Roman.webAPI.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=NOTE0113C5\\SQLEXPRESS; Initial Catalog= SENAI_ROMAN; Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-0BA1Q0M\\SQLEXPRESS; Initial Catalog= SENAI_ROMAN; Integrated Security=True");
             }
         }
 

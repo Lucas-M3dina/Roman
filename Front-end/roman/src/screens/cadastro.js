@@ -1,36 +1,74 @@
 import React, {Component} from 'react';
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Image,
+  TextInput,
+  Button,
+} from 'react-native';
+import base64 from 'react-native-base64';
 
 import api from '../services/api';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
+import { Picker } from "@react-native-picker/picker";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const InputMultiple = (props) => {
+  return (
+      <TextInput
+          {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
+          editable
+      />
+  );
+}
 
 export default class Cadastro extends Component {
   constructor(props) {
     super(props);
     this.state = {
       listaProjetos: [],
+      idTema: 0,
+      nomeProjeto: '',
+      descricao: ''
     };
   }
 
   Inscrever = async idProjeto => {
     try {
       const token = await AsyncStorage.getItem('userToken');
+      var decodeToken = base64.decode(token.split(".")[1]);
+      var decodeToken = decodeToken.split('"')[7].toString();
+      console.warn(decodeToken)
 
-      console.warn(idProjeto);
 
-      await api.post(
-        '/projetos',
-        {},
+      const response = await api.post('/projetos',
         {
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
+            idTema: this.state.idTema,
+            nomeProjeto: this.state.nomeProjeto,
+            descricao: this.state.descricao,
+            idProfessor: decodeToken,
         },
-      );
+        {
+            headers: {
+                Authorization: 'Bearer ' + token,
+            }
+        });
+
+      if (response.status == 201) {
+          console.warn("Projeto cadastrado")
+          this.setState({
+              idTema: 0,
+              nomeProjeto: '',
+              descricao: '',
+              
+          })
+      }
     } catch (error) {
-      console.warn(error);
+        console.warn(error);
     }
   };
 
@@ -48,133 +86,139 @@ export default class Cadastro extends Component {
 
   render() {
     return (
-      <View style={styles.main}>
-        {/* Cabeçalho - Header */}
-        <View style={styles.mainHeader}>
-          <View style={styles.mainHeaderRow}>
-            {/* <Image
-              source={require('../../assets/img/calendar.png')}
-              style={styles.mainHeaderImg}
-            /> */}
-            <Text style={styles.mainHeaderText}>{'Projetos'.toUpperCase()}</Text>
-          </View>
-          <View style={styles.mainHeaderLine} />
-        </View>
+      <View style={styles.backgroundpage}>
+                <ScrollView style={styles.ScrollView} >
+                    <View style={styles.header}>
+                        <View style={styles.pageTitle}>
+                            <Text style={styles.title}>Cadastro</Text>
+                        </View>
+                    </View>
+                    <View style={styles.main}>
+                        <Picker
+                            selectedValue={this.state.idTema}
+                            onValueChange={(itemValue, itemIndex) => this.setState({ idTema: itemValue })}
+                            style={styles.picker}>
+                            <Picker.Item label="Selecione o tema" value="0" />
+                            <Picker.Item label="HQ" value="1" />
+                            <Picker.Item label="Gestão" value="2" />
+                        </Picker>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={nomeProjeto => this.setState({ nomeProjeto })}
+                            value={this.state.nomeProjeto}
+                            placeholder="Titulo do projeto"
+                            keyboardType="default"
+                        />
+                        <InputMultiple
+                            multiline
+                            numberOfLines={4}
+                            onChangeText={descricao => this.setState({ descricao })}
+                            value={this.state.descricao}
+                            style={styles.multipleInput}
+                            placeholder="Descrição do projeto"
+                        />
 
-        {/* Corpo - Body */}
-        <View style={styles.mainBody}>
-          <FlatList
-            contentContainerStyle={styles.mainBodyContent}
-            data={this.state.listaEventos}
-            keyExtractor={item => item.idProjeto}
-            renderItem={this.renderItem}
-          />
-        </View>
-      </View>
+                        <TouchableOpacity
+                            title="Cadastro"
+                            style={styles.btn}
+                            onPress={() => this.Inscrever()}
+                        >
+                            <Text style={styles.btnText}>Cadastrar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            </View>
     );
   }
-
-  renderItem = ({item}) => (
-    // <Text style={{ fontSize: 20, color: 'red' }}>{item.nomeEvento}</Text>
-
-    <View style={styles.flatItemRow}>
-      <View style={styles.flatItemImg}>
-        {/* <TouchableOpacity
-          onPress={() => this.Inscrever(item.idProjeto)}
-          style={styles.flatItemImg}>
-          <Image
-            source={require('../../assets/img/view.png')}
-            style={styles.flatItemImgIcon}
-          />
-        </TouchableOpacity> */}
-      </View>
-    </View>
-  );
 }
 
 const styles = StyleSheet.create({
-  // unidades de medida
+  backgroundpage: {
+      flex: 1,
+      backgroundColor: '',
+      alignItems: 'center'
+  },
+  ScrollView: {
+      width: '100%'
+  },
 
-  // porcentagem
-  // ex: height: '50%'
+  header: {
+      alignItems: 'center'
+  },
 
-  // px
-  // ex: height: 50 (não é necessário colocar a unidade de medida px)
 
-  // proporção
-  // ex: flex: 1
+  pageTitle: {
+      width: '45%',
+      borderBottomColor: "#477ed6",
+      borderBottomWidth: 1,
+      alignItems: 'center'
+  },
 
-  // conteúdo da main
+  title: {
+      textTransform: 'uppercase',
+      color: '#477ed6',
+      fontWeight: 'bold',
+      fontSize: 26,
+      letterSpacing: 5,
+      marginTop: 40,
+  },
+
   main: {
-    flex: 1,
-    backgroundColor: '#F1F1F1',
-  },
-  // cabeçalho
-  mainHeader: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  mainHeaderRow: {
-    flexDirection: 'row',
-  },
-  // imagem do cabeçalho
-  mainHeaderImg: {
-    width: 22,
-    height: 22,
-    tintColor: '#ccc',
-    marginRight: -5,
-    marginTop: -12,
-  },
-  // texto do cabeçalho
-  mainHeaderText: {
-    fontSize: 16,
-    letterSpacing: 5,
-    color: '#999',
-  },
-  // linha de separação do cabeçalho
-  mainHeaderLine: {
-    width: 220,
-    paddingTop: 10,
-    borderBottomColor: '#999',
-    borderBottomWidth: 1,
+      flex: 2,
+      marginTop: 40,
+      width: '100%',
+      alignItems: 'center'
   },
 
-  // conteúdo do body
-  mainBody: {
-    flex: 4,
+  picker: {
+      width: '78%',
+      borderRadius: 60,
+      borderColor: "#009DF5",
+      placeholderTextColor: '#A4A4A4',
+      borderStyle: 'solid',
+      borderWidth: 1,
+      backgroundColor: '#FFF',
+      placeholderTextColor: '#A4A4A4',
   },
-  // conteúdo da lista
-  mainBodyContent: {
-    paddingTop: 30,
-    paddingRight: 50,
-    paddingLeft: 50,
+
+  input: {
+      width: '80%',
+      borderRadius: 20,
+      borderColor: "#477ed6",
+      borderStyle: 'solid',
+      borderWidth: 1,
+      backgroundColor: '#FFF',
+      textAlign: 'center',
+      marginTop: 10,
   },
-  // dados do evento de cada item da lista (ou seja, cada linha da lista)
-  flatItemRow: {
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    marginTop: 40,
+
+  multipleInput: {
+      width: '80%',
+      borderRadius: 20,
+      borderColor: "#477ed6",
+      borderStyle: 'solid',
+      borderWidth: 1,
+      backgroundColor: '#FFF',
+      textAlign: 'center',
+      marginTop: 20,
   },
-  flatItemContainer: {
-    flex: 1,
+  btn: {
+      width: '30%',
+      borderColor: '#477ed6',
+      borderWidth: 1,
+      backgroundColor: '#FFF',
+      borderRadius: 10,
+      marginTop: 20,
+      height: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 10,
+      
   },
-  flatItemTitle: {
-    fontSize: 16,
-    color: '#333',
-  },
-  flatItemInfo: {
-    fontSize: 12,
-    color: '#999',
-    lineHeight: 24,
-  },
-  flatItemImg: {
-    justifyContent: 'center',
-  },
-  flatItemImgIcon: {
-    width: 26,
-    height: 26,
-    tintColor: '#B727FF',
-  },
+
+  btnText: {
+      color: '#477ed6',
+      fontWeight: 'bold',
+      fontSize: 18
+  }
 });
